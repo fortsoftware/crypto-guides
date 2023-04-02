@@ -4,6 +4,7 @@
 
 1. Install [docker](https://docs.docker.com/get-docker/)
 2. Install [docker compose](https://docs.docker.com/compose/install/)
+3. If you have firewall, make sure to at least have the p2p port (default 8080) open.
 
 ## Instructions
 
