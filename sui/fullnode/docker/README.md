@@ -36,7 +36,7 @@
    ```
    wget https://github.com/MystenLabs/sui-genesis/raw/main/testnet/genesis.blob
    ```
-5. Copy the `env` file to `.env`
+5. Copy the `env` file to `.env`. Use your favorite editor to edit the file.
    ```
    cp env .env
    ```
