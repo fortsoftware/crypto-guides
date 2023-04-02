@@ -36,11 +36,11 @@
    ```
    wget https://github.com/MystenLabs/sui-genesis/raw/main/testnet/genesis.blob
    ```
-5. Copy the `env` file to `.env`. Use your favorite editor to edit the file.
+5. Copy the `env` file to `.env`.
    ```
    cp env .env
    ```
-6. Update the variables in the `.env` file.
+6. Update the variables in the `.env` file. Use your favorite editor (example: vi, vim, nano) to edit the file.
    * `SUI_IMAGE_GIT_BRANCH_OR_COMMIT_HASH` -  This is the docker image version, which corresponds to a git branch or a commit hash.
      The default value will be updated on a best-effort basis, but you might need to look in the official Sui
      communication channels (discord) to confirm this is the right commit or branch you should be using.
