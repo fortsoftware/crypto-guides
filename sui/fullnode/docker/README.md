@@ -5,21 +5,30 @@
 1. [Hardware Requirements](https://docs.sui.io/build/fullnode#hardware-requirements)
 2. Install [docker](https://docs.docker.com/get-docker/)
 3. Install [docker compose](https://docs.docker.com/compose/install/)
-4. If you have firewall, make sure to at least have the p2p port (default 8080) open. You might need to open other ports depending on the monitoring tools you want to use.
+4. Install git:
+   ```sudo apt-get install git```
+5. If you have firewall, make sure to at least have the p2p port (default 8080) open. You might need to open other ports depending on the monitoring tools you want to use.
 
 ## Instructions
+1. Clone this repo and change the directory to where the docker file is located.
+   ```
+   git clone https://github.com/fortsoftware/crypto-guides.git
+   cd ./crypto-guides/sui/fullnode/docker
+   ```
 
-1. Create the home directory for your sui node. This is where the node's configuration and db files will live. 
+2. Create the home directory for your sui node. This is where the node's configuration and db files will live. 
    We are going to assume `/var/sui` in this document, but you can choose any directory that you prefer.
    ```
    mkdir -p /var/sui
    ```
-2. Download the `fullnode.yaml` file. This is the file that holds the node configuration.
+3. Download the `fullnode.yaml` file. This is the file that holds the node configuration.
    ```
    wget -O fullnode.yaml https://github.com/MystenLabs/sui/raw/testnet/crates/sui-config/data/fullnode-template.yaml
    ```
-3. Add the following config to your `fullnode.yaml` file. These are peers so that your node can start syncing faster.
+4. Run the following script to update your `fullnode.yaml` file with peer configuration.
    ```
+   tee -a ./fullnode.yaml << END
+   
    p2p-config:
      seed-peers:
        - address: "/dns/sui-rpc-pt.testnet-pride.com/udp/8084"
@@ -31,16 +40,17 @@
        - address: "/ip4/178.18.250.62/udp/8080"
        - address: "/ip4/162.55.84.47/udp/8084"
        - address: "/dns/wave-3.testnet.n1stake.com/udp/8084"
+   END
    ```
-4. Download the testnet genesis file.
+5. Download the testnet genesis file.
    ```
    wget https://github.com/MystenLabs/sui-genesis/raw/main/testnet/genesis.blob
    ```
-5. Copy the `env` file to `.env`.
+6. Copy the `env` file to `.env`.
    ```
    cp env .env
    ```
-6. Update the variables in the `.env` file. Use your favorite editor (example: vi, vim, nano) to edit the file.
+7. Update the variables in the `.env` file. Use your favorite editor (example: vi, vim, nano) to edit the file.
    * `SUI_IMAGE_GIT_BRANCH_OR_COMMIT_HASH` -  This is the docker image version, which corresponds to a git branch or a commit hash.
      The default value will be updated on a best-effort basis, but you might need to look in the official Sui
      communication channels (discord) to confirm this is the right commit or branch you should be using.
@@ -48,10 +58,10 @@
    * `SUI_HOME_DIRECTORY` - This is the sui node home directory. `/var/sui` is the default location, but you can choose
      a different location, as mentioned in step 1 of this document.
 
-7. Run docker compose
+8. Run docker compose
    ```
    docker compose up -d
    ```
 
-8. After a couple of minutes, check if your node is syncing. You can follow [this guide](https://github.com/testnet-pride/Node-manuals/blob/main/Testnets/Sui/guidePT.md#monitor-fullnode-performance)
+9. After a couple of minutes, check if your node is syncing. You can follow [this guide](https://github.com/testnet-pride/Node-manuals/blob/main/Testnets/Sui/guidePT.md#monitor-fullnode-performance)
    to check if your node is syncing.
