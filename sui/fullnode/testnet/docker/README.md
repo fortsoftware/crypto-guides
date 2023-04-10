@@ -10,7 +10,7 @@
 5. If you have firewall, make sure to at least have the p2p port (default 8080) open. You might need to open other ports depending on the monitoring tools you want to use.
 
 ## Instructions
-1. Clone this repo and change the directory to where the docker file is located.
+1. Clone this repo and change the directory to where the `docker-compose.yaml` file is located.
    ```
    git clone https://github.com/fortsoftware/crypto-guides.git
    cd ./crypto-guides/sui/fullnode/testnet/docker
