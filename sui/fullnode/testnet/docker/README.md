@@ -13,7 +13,7 @@
 1. Clone this repo and change the directory to where the docker file is located.
    ```
    git clone https://github.com/fortsoftware/crypto-guides.git
-   cd ./crypto-guides/sui/fullnode/docker
+   cd ./crypto-guides/sui/fullnode/testnet/docker
    ```
 
 2. Create the home directory for your sui node. This is where the node's configuration and db files will live. 
