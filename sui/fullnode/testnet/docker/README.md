@@ -12,6 +12,7 @@
 ## Instructions
 1. Clone this repo and change the directory to where the `docker-compose.yaml` file is located.
    ```
+   cd $HOME
    git clone https://github.com/fortsoftware/crypto-guides.git
    cd ./crypto-guides/sui/fullnode/testnet/docker
    ```
